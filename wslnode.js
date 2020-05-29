@@ -1,7 +1,8 @@
 var args = process.argv.map(arg => {
     let result = arg.replace(/\\/g, '/')
         .replace(/([A-Za-z]):/, '/mnt/$1')
-        .replace(/\/mnt\/\w/, s => s.toLowerCase());
+        .replace(/\/mnt\/\w/, s => s.toLowerCase())
+        .replace(/'/, "\\'");
 
     if (/\/mnt\//.test(result)) {
         result = `"${result}"`;
